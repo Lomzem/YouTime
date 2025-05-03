@@ -9,8 +9,6 @@ enum Command {
 
 async function saveTimestamp(video: YouTubeVideo) {
   chrome.storage.sync.set({ [video.url]: video });
-  console.log("Saved timestamp");
-  console.log(await chrome.storage.sync.get(video.url));
 }
 
 async function createYouTubeVideo(tab: chrome.tabs.Tab) {
@@ -57,6 +55,5 @@ chrome.commands.onCommand.addListener(
         console.log("Unknown command");
         break;
     }
-    console.log(`Command: ${command}`);
   },
 );

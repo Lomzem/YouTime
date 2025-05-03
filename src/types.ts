@@ -1,13 +1,12 @@
 // src/types.ts
 
-export interface Timestamp {
-  url: string;
+export interface TimestampNote {
   time: string;
-  value: string;
+  note: string;
 }
 
 export interface YouTubeVideo {
   url: string;
   title: string;
-  timestamps: Timestamp[];
+  timestamps: TimestampNote[];
 }

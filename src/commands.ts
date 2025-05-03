@@ -1,6 +1,7 @@
 // src/commands.ts
 
-import { Timestamp } from "./types";
+import { SaveTimestampMessage } from "./client/getInput";
+import { insertTimestamp } from "./storage";
 
 enum Command {
   SaveTimestamp = "save-timestamp",
@@ -13,9 +14,9 @@ async function createYouTubeVideo(tab: chrome.tabs.Tab) {
   });
 }
 
-chrome.runtime.onMessage.addListener((message) => {
+chrome.runtime.onMessage.addListener((message: SaveTimestampMessage) => {
   if (message.type === "save-timestamp") {
-    const timestamp: Timestamp = message.timestamp;
+    insertTimestamp(message.timestampNote, message.url);
   }
 });
 

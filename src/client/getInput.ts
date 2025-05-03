@@ -1,6 +1,12 @@
+import { TimestampNote } from "../types";
 import injectHtml from "./injectHtml";
 import { getCleanURL, getCurrentTime } from "./utils";
-import { Timestamp } from "../types";
+
+export interface SaveTimestampMessage {
+  type: "save-timestamp";
+  url: string;
+  timestampNote: TimestampNote;
+}
 
 function youtimeClose() {
   const youtimediv = document.querySelector("#youtime");
@@ -19,15 +25,15 @@ function main() {
 
   if (youtimeSaveBtn) {
     youtimeSaveBtn.addEventListener("mousedown", () => {
-      const timestamp: Timestamp = {
-        url: getCleanURL()!,
-        time: getCurrentTime()!,
-        value: youtimeInput?.value!,
-      };
-      chrome.runtime.sendMessage({
+      const message: SaveTimestampMessage = {
         type: "save-timestamp",
-        timestamp: timestamp,
-      });
+        url: getCleanURL()!,
+        timestampNote: {
+          note: youtimeInput?.value!,
+          time: getCurrentTime()!,
+        },
+      };
+      chrome.runtime.sendMessage(message);
       youtimeClose();
     });
   }

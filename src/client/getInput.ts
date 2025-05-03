@@ -23,6 +23,16 @@ function main() {
   const youtimeInput: HTMLTextAreaElement | null =
     document.querySelector("#youtime-input");
 
+  const youtimeCancelBtn: HTMLButtonElement | null = document.querySelector(
+    "#youtime-cancel-btn",
+  );
+
+  if (youtimeCancelBtn) {
+    youtimeCancelBtn.addEventListener("mousedown", () => {
+      youtimeClose();
+    });
+  }
+
   if (youtimeSaveBtn) {
     youtimeSaveBtn.addEventListener("mousedown", () => {
       const message: SaveTimestampMessage = {
@@ -39,7 +49,7 @@ function main() {
   }
 
   const textarea: HTMLTextAreaElement | null =
-    document.querySelector("textarea.youtime");
+    document.querySelector("#youtime textarea");
   if (textarea) {
     textarea.focus();
   }

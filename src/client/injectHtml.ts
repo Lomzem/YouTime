@@ -15,12 +15,17 @@ export default function injectHtml() {
 
   div.innerHTML = `
   ${styles}
-<section id="youtime" class="youtime">
-    <main class="youtime">
-        <h1 class="youtime header">Add a Note</h1>
-        <p>Timestamp: ${currentTime}</p>
-        <textarea id="youtime-input" class="youtime" placeholder="Add a note..."></textarea>
-        <button id="youtime-save-btn">Save</button>
+<section id="youtime">
+    <main>
+    <header>
+        <span class="badge">${currentTime}</span>
+        <h3>Add a Note</h1>
+    </header>
+    <textarea id="youtime-input" placeholder="What are your thoughts on this moment?"></textarea>
+    <footer>
+        <button id="youtime-cancel-btn" class="outline">Cancel</button>
+        <button id="youtime-save-btn" class="primary">Save</button>
+    </footer>
     </main>
 </section>
 `;

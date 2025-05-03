@@ -41,6 +41,10 @@ async function createYouTubeVideo(tab: chrome.tabs.Tab) {
   };
 
   await saveTimestamp(video);
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id || 0 },
+    files: ["getInput.js"],
+  });
 }
 
 chrome.commands.onCommand.addListener(

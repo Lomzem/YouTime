@@ -7,9 +7,8 @@
         "activeTab",
         "scripting",
         "storage",
-        "<all_urls>"
+        "windows"
     ],
-    "action": {},
     "background": {
         "service_worker": "background.js"
     },

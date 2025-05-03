@@ -5,13 +5,7 @@ import { insertTimestamp } from "./storage";
 
 enum Command {
   SaveTimestamp = "save-timestamp",
-}
-
-async function createYouTubeVideo(tab: chrome.tabs.Tab) {
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id || 0 },
-    files: ["getInput.js"],
-  });
+  OpenVault = "open-vault",
 }
 
 chrome.runtime.onMessage.addListener((message: SaveTimestampMessage) => {
@@ -24,7 +18,10 @@ chrome.commands.onCommand.addListener(
   async (command: string, tab: chrome.tabs.Tab) => {
     switch (command) {
       case Command.SaveTimestamp:
-        await createYouTubeVideo(tab);
+        chrome.scripting.executeScript({
+          target: { tabId: tab.id || 0 },
+          files: ["getInput.js"],
+        });
         break;
       default:
         console.log("Unknown command");

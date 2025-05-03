@@ -18,21 +18,19 @@ function youtimeClose() {
 function main() {
   injectHtml();
 
-  const youtimeSaveBtn: HTMLButtonElement | null =
-    document.querySelector("#youtime-save-btn");
-  const youtimeInput: HTMLTextAreaElement | null =
-    document.querySelector("#youtime-input");
-
   const youtimeCancelBtn: HTMLButtonElement | null = document.querySelector(
     "#youtime-cancel-btn",
   );
-
   if (youtimeCancelBtn) {
     youtimeCancelBtn.addEventListener("mousedown", () => {
       youtimeClose();
     });
   }
 
+  const youtimeSaveBtn: HTMLButtonElement | null =
+    document.querySelector("#youtime-save-btn");
+  const youtimeInput: HTMLTextAreaElement | null =
+    document.querySelector("#youtime-input");
   if (youtimeSaveBtn) {
     youtimeSaveBtn.addEventListener("mousedown", () => {
       const message: SaveTimestampMessage = {

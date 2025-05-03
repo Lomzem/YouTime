@@ -1,14 +1,4 @@
-function main() {
-  const youtimediv = document.querySelector("#youtime");
-  let div;
-  if (youtimediv) {
-    div = youtimediv;
-  } else {
-    div = document.createElement("div");
-    div.id = "youtime";
-  }
-
-  div.innerHTML = `
+export const styles = `
 <style>
 section.youtime *, section.youtime *::before, section.youtime *::after {
   box-sizing: border-box;
@@ -42,8 +32,8 @@ section.youtime {
     color: var(--youtime-fg);
 }
 main.youtime {
-    width: 75dvh;
-    height: 75dvh;
+    width: 50dvh;
+    height: 50dvh;
     background: var(--youtime-bg);
     border-radius: var(--youtime-border-radius);
     padding: 16px 32px;
@@ -63,10 +53,9 @@ textarea.youtime {
     resize: none;
     border: none;
     border-radius: var(--youtime-border-radius);
-    padding: 16px;
+    padding: 2rem;
     background: var(--youtime-card-bg) !important;
     color: var(--youtime-fg) !important;
-    font-size: 36px !important;
     width: 100%;
 }
 
@@ -89,34 +78,4 @@ section.youtime button {
     cursor: pointer;
 }
 </style>
-<section id="youtime" class="youtime">
-    <main class="youtime">
-        <h1 class="youtime header">Add a Note!</h1>
-        <textarea class="youtime" placeholder="Add a note..."></textarea>
-        <button id="youtime-save-btn" onmousedown="youtimeClose()">Save</button>
-    </main>
-</section>
 `;
-
-  document.body.prepend(div);
-
-  const youtimeSaveBtn = document.querySelector("#youtime-save-btn");
-  if (youtimeSaveBtn) {
-    youtimeSaveBtn.addEventListener("mousedown", youtimeClose);
-  }
-
-  const textarea: HTMLTextAreaElement | null =
-    document.querySelector("textarea.youtime");
-  if (textarea) {
-    textarea.focus();
-  }
-}
-
-function youtimeClose() {
-  const youtimediv = document.querySelector("#youtime");
-  if (youtimediv) {
-    youtimediv.remove();
-  }
-}
-
-main();

@@ -1,49 +1,23 @@
 // src/commands.ts
 
-import { YouTubeData } from "./contentScript";
-import { YouTubeVideo } from "./types";
+import { Timestamp } from "./types";
 
 enum Command {
   SaveTimestamp = "save-timestamp",
 }
 
-async function saveTimestamp(video: YouTubeVideo) {
-  chrome.storage.sync.set({ [video.url]: video });
-}
-
 async function createYouTubeVideo(tab: chrome.tabs.Tab) {
-  // chrome.storage.sync.set({ myKey: "myValue" });
-  // const value = chrome.storage.sync.get("myKey");
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id || 0 },
-    files: ["contentScript.js"],
-  });
-
-  const data: YouTubeData = await new Promise((resolve) => {
-    chrome.runtime.onMessage.addListener((message) => {
-      if (message.type === "youtube-data") {
-        resolve(message);
-      }
-    });
-  });
-
-  const video: YouTubeVideo = {
-    url: tab.url!,
-    title: data.title,
-    timestamps: [
-      {
-        time: data.timestamp,
-        value: "test",
-      },
-    ],
-  };
-
-  await saveTimestamp(video);
   chrome.scripting.executeScript({
     target: { tabId: tab.id || 0 },
     files: ["getInput.js"],
   });
 }
+
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.type === "save-timestamp") {
+    const timestamp: Timestamp = message.timestamp;
+  }
+});
 
 chrome.commands.onCommand.addListener(
   async (command: string, tab: chrome.tabs.Tab) => {

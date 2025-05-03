@@ -8,8 +8,7 @@ module.exports = {
   devtool: isDevelopment ? "inline-source-map" : false,
   entry: {
     background: path.resolve(__dirname, "..", "src", "background.ts"),
-    contentScript: path.resolve(__dirname, "..", "src", "contentScript.ts"),
-    getInput: path.resolve(__dirname, "..", "src", "getInput.ts"),
+    getInput: path.resolve(__dirname, "..", "src", "client", "getInput.ts"),
   },
   output: {
     path: path.join(__dirname, "../dist"),

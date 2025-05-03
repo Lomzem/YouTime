@@ -10,6 +10,18 @@ function main() {
 
   div.innerHTML = `
 <style>
+section.youtime *, section.youtime *::before, section.youtime *::after {
+  box-sizing: border-box;
+}
+
+section.youtime * {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
 section.youtime {
     --youtime-bg: #1e2030;
     --youtime-fg: #cad3f5;
@@ -37,10 +49,13 @@ main.youtime {
     padding: 16px 32px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 24px;
 }
 h1.youtime {
     text-align: center;
+    padding: 0;
+    font-size: 100%;
 }
 
 textarea.youtime {
@@ -49,14 +64,19 @@ textarea.youtime {
     border: none;
     border-radius: var(--youtime-border-radius);
     padding: 16px;
-    outline: none;
-    background: var(--youtime-card-bg);
-    color: var(--youtime-fg);
-    font-family: monospace;
+    background: var(--youtime-card-bg) !important;
+    color: var(--youtime-fg) !important;
+    font-size: 36px !important;
+    width: 100%;
 }
 
 textarea.youtime::placeholder {
     color: var(--youtime-muted-fg);
+}
+
+textarea.youtime::focus {
+    outline: none;
+    border: none;
 }
 
 section.youtime button {
@@ -65,6 +85,8 @@ section.youtime button {
     border-radius: var(--youtime-border-radius);
     padding: 16px;
     border: none;
+    width: 80%;
+    cursor: pointer;
 }
 </style>
 <section id="youtime" class="youtime">
@@ -77,9 +99,16 @@ section.youtime button {
 `;
 
   document.body.prepend(div);
+
   const youtimeSaveBtn = document.querySelector("#youtime-save-btn");
   if (youtimeSaveBtn) {
     youtimeSaveBtn.addEventListener("mousedown", youtimeClose);
+  }
+
+  const textarea: HTMLTextAreaElement | null =
+    document.querySelector("textarea.youtime");
+  if (textarea) {
+    textarea.focus();
   }
 }
 

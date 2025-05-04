@@ -45,6 +45,9 @@ function openVault() {
 
 chrome.commands.onCommand.addListener(
   async (command: string, tab: chrome.tabs.Tab) => {
+    if (!tab.url || !tab.url.includes("youtube.com")) {
+      return;
+    }
     switch (command) {
       case Command.SaveTimestamp:
         chrome.scripting.executeScript({

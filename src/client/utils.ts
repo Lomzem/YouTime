@@ -5,8 +5,11 @@ export function getCurrentTime(): string | undefined {
 }
 
 export function getCleanURL(): string | undefined {
+  console.log(
+    document.querySelector("#title > h1 > yt-formatted-string")?.textContent,
+  );
   return (
-    document.querySelector("link[rel='shortlinkUrl']")?.getAttribute("href") ??
+    document.querySelector("#title > h1 > yt-formatted-string")?.textContent ??
     undefined
   );
 }

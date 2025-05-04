@@ -10,3 +10,7 @@ export interface YouTubeVideo {
   title: string;
   timestamps: TimestampNote[];
 }
+
+export interface AllVideos {
+  [url: string]: YouTubeVideo;
+}

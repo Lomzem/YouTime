@@ -1,10 +1,11 @@
 import { TimestampNote } from "../types";
 import injectHtml from "./injectHtml";
-import { getCleanURL, getCurrentTime } from "./utils";
+import { getCleanURL, getCurrentTime, getYoutubeTitle } from "./utils";
 
 export interface SaveTimestampMessage {
   type: "save-timestamp";
   url: string;
+  title: string;
   timestampNote: TimestampNote;
 }
 
@@ -36,6 +37,7 @@ function main() {
       const message: SaveTimestampMessage = {
         type: "save-timestamp",
         url: getCleanURL()!,
+        title: getYoutubeTitle(),
         timestampNote: {
           note: youtimeInput?.value!,
           time: getCurrentTime()!,

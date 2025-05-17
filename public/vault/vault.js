@@ -15,18 +15,42 @@ chrome.runtime.sendMessage({
 
 function hydrate(all_videos) {
   console.log(all_videos);
-  for (const [, video] of Object.entries(all_videos)) {
-    const ul = document.querySelector("ul");
-    const li = document.createElement("li");
-    ul.appendChild(li);
-    const innerul = document.createElement("ul");
-    li.appendChild(document.createTextNode(video.title));
-    li.appendChild(innerul);
+  const videoList = document.querySelector(".video-list");
 
+  for (const [, video] of Object.entries(all_videos)) {
+    // Create video item
+    const videoItem = document.createElement("li");
+    videoItem.className = "video-item";
+
+    // Create and add video title
+    const videoTitle = document.createElement("div");
+    videoTitle.className = "video-title";
+    videoTitle.textContent = video.title;
+    videoItem.appendChild(videoTitle);
+
+    // Create timestamp list
+    const timestampList = document.createElement("ul");
+    timestampList.className = "timestamp-list";
+
+    // Add all timestamps
     video.timestamps.forEach((timestamp) => {
-      const li = document.createElement("li");
-      li.innerText = `${timestamp.time} - ${timestamp.note}`;
-      innerul.appendChild(li);
+      const timestampItem = document.createElement("li");
+      timestampItem.className = "timestamp-item";
+
+      const timeSpan = document.createElement("span");
+      timeSpan.className = "timestamp-time";
+      timeSpan.textContent = timestamp.time;
+
+      const noteSpan = document.createElement("span");
+      noteSpan.className = "timestamp-note";
+      noteSpan.textContent = timestamp.note;
+
+      timestampItem.appendChild(timeSpan);
+      timestampItem.appendChild(noteSpan);
+      timestampList.appendChild(timestampItem);
     });
+
+    videoItem.appendChild(timestampList);
+    videoList.appendChild(videoItem);
   }
 }

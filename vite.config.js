@@ -9,6 +9,7 @@ export default {
             input: {
                 background: "./src/background/background.ts",
                 getInput: "./src/content/getInput/getInput.ts",
+                vault: "./src/vault/vault.html",
             },
             output: {
                 entryFileNames: `[name].js`,

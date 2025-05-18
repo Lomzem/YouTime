@@ -1,3 +1,7 @@
 export default function openVault() {
-    console.log("vault opened")
+    chrome.tabs.create({
+        /* Path defined by vite */
+        url: "src/vault/vault.html",
+        active: true,
+    })
 }

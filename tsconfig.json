@@ -17,6 +17,9 @@
             ],
             "@commands": [
                 "./src/background/commands"
+            ],
+            "@vault/*": [
+                "./src/vault/*"
             ]
         },
         /* Bundler mode */

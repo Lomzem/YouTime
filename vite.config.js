@@ -6,7 +6,7 @@ export default {
         outDir: "dist",
         rollupOptions: {
             input: {
-                background: "src/background.ts",
+                background: "src/background/background.ts",
                 // content: "src/content.ts",
             },
             output: {

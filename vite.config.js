@@ -4,10 +4,11 @@ import tsconfigPaths from "vite-tsconfig-paths"
 export default {
     build: {
         outDir: "dist",
+        minify: false,
         rollupOptions: {
             input: {
-                background: "src/background/background.ts",
-                // content: "src/content.ts",
+                background: "./src/background/background.ts",
+                getInput: "./src/content/getInput/getInput.ts",
             },
             output: {
                 entryFileNames: `[name].js`,

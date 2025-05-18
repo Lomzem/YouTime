@@ -9,6 +9,12 @@
             "@/*": [
                 "./src/*"
             ],
+            "@background/*": [
+                "./src/background/*"
+            ],
+            "@content/*": [
+                "./src/content/*"
+            ],
             "@commands": [
                 "./src/background/commands"
             ]

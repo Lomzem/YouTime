@@ -1,10 +1,12 @@
-export const styles = `
+/* This must be a function and not a string because of vite .-. */
+export function getStyles() {
+    return `
 <style>
 @import url('https://fonts.cdnfonts.com/css/wotfard');
 
-section.youtime *,
-section.youtime *::before,
-section.youtime *::after {
+#youtime *,
+#youtime *::before,
+#youtime *::after {
     box-sizing: border-box;
 }
 
@@ -155,4 +157,5 @@ section.youtime *::after {
     background: rgba(255, 255, 255, 0.15);
 }
 </style>
-`;
+`
+}

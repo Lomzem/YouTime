@@ -1,6 +1,6 @@
 {
-    "name": "Medium Extension",
-    "description": "This extension is made for demonstration purposes",
+    "name": "YouTime",
+    "description": "",
     "version": "1.0",
     "manifest_version": 3,
     "permissions": [
@@ -10,7 +10,8 @@
         "windows"
     ],
     "background": {
-        "service_worker": "background.js"
+        "service_worker": "background.js",
+        "type": "module"
     },
     "commands": {
         "save-timestamp": {

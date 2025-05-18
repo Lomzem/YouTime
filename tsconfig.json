@@ -1,15 +1,35 @@
 {
     "compilerOptions": {
-        "strict": true,
-        "module": "commonjs",
-        "target": "es6",
-        "esModuleInterop": true,
-        "sourceMap": true,
-        "rootDir": "src",
-        "outDir": "dist/js",
-        "noEmitOnError": true,
-        "typeRoots": [
-            "node_modules/@types"
-        ]
-    }
+        "target": "ES2020",
+        "useDefineForClassFields": true,
+        "module": "ESNext",
+        "outDir": "dist",
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ],
+            "@background/*": [
+                "./src/background/*"
+            ],
+            "@content/*": [
+                "./src/content/*"
+            ],
+            "@commands": [
+                "./src/background/commands"
+            ],
+            "@vault/*": [
+                "./src/vault/*"
+            ]
+        },
+        /* Bundler mode */
+        "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
+        "isolatedModules": true,
+        "moduleDetection": "force",
+        "noEmit": true
+    },
+    "include": [
+        "src"
+    ]
 }

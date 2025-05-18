@@ -1,22 +1,21 @@
 {
-    "name": "youtime",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "build": "webpack --config webpack/webpack.config.js",
-        "dev": "NODE_ENV=development webpack --config webpack/webpack.config.js --watch"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "packageManager": "pnpm@10.10.0",
-    "devDependencies": {
-        "@types/chrome": "^0.0.318",
-        "copy-webpack-plugin": "^13.0.0",
-        "ts-loader": "^9.5.2",
-        "typescript": "^5.8.3",
-        "webpack": "^5.99.7",
-        "webpack-cli": "^6.0.1"
-    }
+  "name": "youtime",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.11.0",
+  "devDependencies": {
+    "@types/chrome": "^0.0.323",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vite-tsconfig-paths": "^5.1.4"
+  }
 }

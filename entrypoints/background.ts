@@ -10,6 +10,12 @@ export default defineBackground(() => {
                     files: [getInputPath],
                 })
                 break
+            case Command.OpenVault:
+                browser.tabs.create({
+                    url: browser.runtime.getURL("/vault.html"),
+                    active: true,
+                })
+                break
             default:
                 console.log("unknown")
                 break

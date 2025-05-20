@@ -10,6 +10,12 @@ export default defineConfig({
                 },
                 description: "Save Timestamp",
             },
+            "open-vault": {
+                suggested_key: {
+                    default: "Alt+V",
+                },
+                description: "Open Timestamp Vault",
+            },
         },
     },
 })

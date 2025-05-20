@@ -1,6 +1,7 @@
 import { defineConfig } from "wxt"
 
 export default defineConfig({
+    modules: ["@wxt-dev/module-svelte"],
     manifest: {
         permissions: ["storage", "scripting", "activeTab", "windows"],
         commands: {
@@ -16,6 +17,12 @@ export default defineConfig({
                 },
                 description: "Open Timestamp Vault",
             },
+        },
+        content_security_policy: {
+            extension_pages: "script-src 'self'; object-src 'self'",
+        },
+        action: {
+            default_popup: "vault.html",
         },
     },
 })

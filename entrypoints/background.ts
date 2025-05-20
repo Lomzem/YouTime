@@ -1,5 +1,5 @@
 import Command from "@/utils/commands"
-import { getInput } from "./getInput.content"
+import { getInputPath } from "./getInput.content"
 
 export default defineBackground(() => {
     browser.commands.onCommand.addListener((command, tab) => {
@@ -7,7 +7,7 @@ export default defineBackground(() => {
             case Command.SaveTimestamp:
                 browser.scripting.executeScript({
                     target: { tabId: tab.id! },
-                    files: [getInput],
+                    files: [getInputPath],
                 })
                 break
             default:

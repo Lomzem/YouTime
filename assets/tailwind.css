@@ -1,7 +1,14 @@
 @import "tailwindcss";
 
+.gradient-primary {
+    background-image: linear-gradient(135deg, #ff4444, #cc1c1c);
+}
+
 @theme {
-    --color-background-0: #1a1a1a;
-    --color-background-1: #111111;
-    --color-foreground: #cad3f5;
+    --color-bg0: #1a1a1a;
+    --color-bg1: #111111;
+    --color-bg3: #1a1a1a;
+    --color-fg: #ffffff;
+    --color-card-bg: #1c2027;
+    --color-muted-fg: #6e738d;
 }

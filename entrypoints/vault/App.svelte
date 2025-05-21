@@ -1,49 +1,75 @@
 <script lang="ts">
-    const videospromise = Promise.resolve([
-        {
-            title: "How To Make A SPA With SvelteKit (SSR vs. CSR)",
-            timestamps: [
-                {
-                    time: "00:21",
-                    note: "This is where the chorus begins! Great melody here!",
-                },
-            ],
-        },
-        {
-            title: "How To Make A SPA With SvelteKit (SSR vs. CSR)",
-            timestamps: [
-                {
-                    time: "00:21",
-                    note: "This is where the chorus begins! Great melody here!",
-                },
-                {
-                    time: "01:45",
-                    note: "Notice the key change in this section. The production quality is amazing.",
-                },
-            ],
-        },
-        {
-            title: "How To Make A SPA With SvelteKit (SSR vs. CSR)",
-            timestamps: [
-                {
-                    time: "00:21",
-                    note: "This is where the chorus begins! Great melody here!",
-                },
-                {
-                    time: "01:45",
-                    note: "Notice the key change in this section. The production quality is amazing.",
-                },
-                {
-                    time: "01:45",
-                    note: "Notice the key change in this section. The production quality is amazing.",
-                },
-                {
-                    time: "01:45",
-                    note: "Notice the key change in this section. The production quality is amazing.",
-                },
-            ],
-        },
-    ])
+    import { EXTStorage } from "@/utils/storage"
+
+    let videospromise = $state(
+        EXTStorage.YTVideos.getValue().then((allvideos) => {
+            if (!allvideos) return []
+            return Object.entries(allvideos).map((entry) => {
+                return { url: entry[0], video: entry[1] }
+            })
+        })
+    )
+
+    storage.watch(EXTStorage.YTVideos.key, (_new: AllVideos | null) => {
+        if (!_new) return []
+        videospromise = Promise.resolve(
+            Object.entries(_new).map((entry) => {
+                return { url: entry[0], video: entry[1] }
+            })
+        )
+    })
+
+    function urlThumbnail(url: string): string {
+        const id = url.split("/").at(-1)
+        if (!id) throw new Error("Invalid URL")
+        return `https://i.ytimg.com/vi/${id}/hqdefault.jpg`
+    }
+
+    // const videospromise = Promise.resolve([
+    //     {
+    //         title: "How To Make A SPA With SvelteKit (SSR vs. CSR)",
+    //         timestamps: [
+    //             {
+    //                 time: "00:21",
+    //                 note: "This is where the chorus begins! Great melody here!",
+    //             },
+    //         ],
+    //     },
+    //     {
+    //         title: "How To Make A SPA With SvelteKit (SSR vs. CSR)",
+    //         timestamps: [
+    //             {
+    //                 time: "00:21",
+    //                 note: "This is where the chorus begins! Great melody here!",
+    //             },
+    //             {
+    //                 time: "01:45",
+    //                 note: "Notice the key change in this section. The production quality is amazing.",
+    //             },
+    //         ],
+    //     },
+    //     {
+    //         title: "How To Make A SPA With SvelteKit (SSR vs. CSR)",
+    //         timestamps: [
+    //             {
+    //                 time: "00:21",
+    //                 note: "This is where the chorus begins! Great melody here!",
+    //             },
+    //             {
+    //                 time: "01:45",
+    //                 note: "Notice the key change in this section. The production quality is amazing.",
+    //             },
+    //             {
+    //                 time: "01:45",
+    //                 note: "Notice the key change in this section. The production quality is amazing.",
+    //             },
+    //             {
+    //                 time: "01:45",
+    //                 note: "Notice the key change in this section. The production quality is amazing.",
+    //             },
+    //         ],
+    //     },
+    // ])
 </script>
 
 <main
@@ -57,26 +83,23 @@
             >
                 <img
                     class="rounded-lg"
-                    src="https://i.ytimg.com/vi/plBW8pbpOe0/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAaYPARYWCRChCH6BMhIGMiVDbfBw"
+                    src={urlThumbnail(video.url)}
                     alt="thumbnail"
                 />
                 <section class="flex flex-col gap-2 px-4 py-4">
                     <div>
                         <h2 class="text-xl font-bold">
-                            {video.title}
+                            {video.video.title}
                         </h2>
-                        <span class="text-card-content/75">
-                            Last updated: <time>2 days ago</time>
-                        </span>
                     </div>
                     <div>
                         <span class="text-card-content/75"
-                            >{video.timestamps.length} notes:</span
+                            >{video.video.timestamps.length} notes:</span
                         >
                         <ul class="flex flex-col gap-1">
-                            {#each video.timestamps.slice(0, 2) as timestamp}
+                            {#each video.video.timestamps.slice(0, 2) as timestamp}
                                 <li
-                                    class="bg-card1 text-card1-content flex items-center gap-2 rounded-lg p-2 transition-all duration-150 hover:opacity-97"
+                                    class="bg-card1 text-card1-content flex items-center gap-2 rounded-lg px-2 py-1 transition-all duration-150 hover:opacity-97"
                                 >
                                     <time
                                         class="gradient-primary rounded-lg p-1"
@@ -85,9 +108,11 @@
                                     <span>{timestamp.note}</span>
                                 </li>
                             {/each}
-                            {#if video.timestamps.length > 2}
+                            {#if video.video.timestamps.length > 2}
                                 <div></div>
-                                <li>+2 more notes</li>
+                                <li>
+                                    +{video.video.timestamps.length - 2} more notes
+                                </li>
                             {/if}
                         </ul>
                     </div>

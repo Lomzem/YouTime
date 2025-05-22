@@ -24,52 +24,6 @@
         if (!id) throw new Error("Invalid URL")
         return `https://i.ytimg.com/vi/${id}/hqdefault.jpg`
     }
-
-    // const videospromise = Promise.resolve([
-    //     {
-    //         title: "How To Make A SPA With SvelteKit (SSR vs. CSR)",
-    //         timestamps: [
-    //             {
-    //                 time: "00:21",
-    //                 note: "This is where the chorus begins! Great melody here!",
-    //             },
-    //         ],
-    //     },
-    //     {
-    //         title: "How To Make A SPA With SvelteKit (SSR vs. CSR)",
-    //         timestamps: [
-    //             {
-    //                 time: "00:21",
-    //                 note: "This is where the chorus begins! Great melody here!",
-    //             },
-    //             {
-    //                 time: "01:45",
-    //                 note: "Notice the key change in this section. The production quality is amazing.",
-    //             },
-    //         ],
-    //     },
-    //     {
-    //         title: "How To Make A SPA With SvelteKit (SSR vs. CSR)",
-    //         timestamps: [
-    //             {
-    //                 time: "00:21",
-    //                 note: "This is where the chorus begins! Great melody here!",
-    //             },
-    //             {
-    //                 time: "01:45",
-    //                 note: "Notice the key change in this section. The production quality is amazing.",
-    //             },
-    //             {
-    //                 time: "01:45",
-    //                 note: "Notice the key change in this section. The production quality is amazing.",
-    //             },
-    //             {
-    //                 time: "01:45",
-    //                 note: "Notice the key change in this section. The production quality is amazing.",
-    //             },
-    //         ],
-    //     },
-    // ])
 </script>
 
 <main

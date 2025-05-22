@@ -38,7 +38,13 @@ export function getYTTitle(): string {
     return titleElem.textContent
 }
 
-export function urlToThumbnail(url: string): string {
+export function getIDfromURL(url: string): string {
     const id = url.split("/").pop()
+    if (!id) throw new Error("Could not find video id")
+    return id
+}
+
+export function urlToThumbnail(url: string): string {
+    const id = getIDfromURL(url)
     return `https://i.ytimg.com/vi/${id}/hqdefault.jpg`
 }

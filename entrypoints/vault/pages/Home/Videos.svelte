@@ -3,12 +3,7 @@
 </script>
 
 {#snippet videoCard(video: YTVideo)}
-    <button
-        onclick={() => {
-            appState.focused = video
-            console.log("hi", video)
-        }}
-    >
+    <a href={`#/video/${getIDfromURL(video.url)}`}>
         <li class="bg-foreground cursor-pointer overflow-hidden rounded-lg">
             <div class="relative">
                 <img
@@ -28,7 +23,7 @@
                 <h3>{video.title}</h3>
             </div>
         </li>
-    </button>
+    </a>
 {/snippet}
 
 <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

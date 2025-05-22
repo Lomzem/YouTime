@@ -1,11 +1,12 @@
 <script lang="ts">
+    import Router from "svelte-spa-router"
     import Home from "./pages/Home.svelte"
     import Details from "./pages/Details.svelte"
-    import appState from "./shared/state.svelte.ts"
+
+    const routes = {
+        "/": Home,
+        "/video/:id": Details,
+    }
 </script>
 
-{#if !appState.focused}
-    <Home />
-{:else}
-    <Details />
-{/if}
+<Router {routes} />

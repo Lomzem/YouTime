@@ -1,32 +1,36 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary: hsl(0, 100%, 50%);
-    --color-primary-content: hsl(0, 0%, 100%);
-    --color-primary-dark: hsl(1, 100%, 40%);
-    --color-primary-light: hsl(1, 100%, 60%);
+    --color-primary: hsl(360, 78%, 64%);
+    --color-primary-content: hsl(0, 77%, 14%);
+    --color-primary-dark: hsl(359, 78%, 54%);
+    --color-primary-light: hsl(359, 79%, 74%);
 
-    --color-secondary: hsl(240, 100%, 50%);
-    --color-secondary-content: hsl(0, 0%, 100%);
-    --color-secondary-dark: hsl(241, 100%, 40%);
-    --color-secondary-light: hsl(241, 100%, 60%);
+    --color-secondary: hsl(60, 78%, 64%);
+    --color-secondary-content: hsl(60, 77%, 14%);
+    --color-secondary-dark: hsl(60, 78%, 54%);
+    --color-secondary-light: hsl(59, 79%, 74%);
 
-    --color-background: hsl(0, 35%, 94%);
-    --color-foreground: hsl(0, 43%, 10%);
-    --color-card: hsl(0, 35%, 80%);
-    --color-card-content: hsl(0, 35%, 20%);
-    --color-card1: hsl(0, 35%, 60%);
-    --color-card1-content: hsl(0, 35%, 0%);
-    --color-border: hsl(0, 34%, 87%);
+    --color-background: hsl(0, 29%, 94%);
+    --color-foreground: hsl(0, 25%, 98%);
+    --color-border: hsl(0, 30%, 88%);
 
-    --color-copy: hsl(0, 35%, 15%);
-    --color-copy-light: hsl(1, 35%, 40%);
-    --color-copy-lighter: hsl(1, 35%, 55%);
+    --color-copy: hsl(0, 30%, 15%);
+    --color-copy-light: hsl(359, 30%, 40%);
+    --color-copy-lighter: hsl(0, 30%, 55%);
 
-    --color-success: hsl(120, 100%, 50%);
-    --color-warning: hsl(60, 100%, 50%);
-    --color-error: hsl(0, 100%, 50%);
-    --color-success-content: hsl(0, 0%, 0%);
-    --color-warning-content: hsl(0, 0%, 0%);
-    --color-error-content: hsl(0, 0%, 100%);
+    --color-success: hsl(120, 78%, 64%);
+    --color-warning: hsl(60, 78%, 64%);
+    --color-error: hsl(0, 78%, 64%);
+    --color-success-content: hsl(120, 77%, 14%);
+    --color-warning-content: hsl(60, 77%, 14%);
+    --color-error-content: hsl(0, 77%, 14%);
+}
+
+button {
+    @apply cursor-pointer rounded-lg p-2;
+}
+
+button.neutral {
+    @apply bg-foreground hover:bg-foreground/85;
 }

@@ -39,11 +39,14 @@ export default defineContentScript({
                         ytvideos[cleanURL] = {
                             title: getYTTitle(),
                             timestamps: [],
+                            url: cleanURL,
+                            thumbnailUrl: urlToThumbnail(cleanURL),
                         }
                     }
                     ytvideos[cleanURL].timestamps.push({
                         note: textarea.value,
                         time: getCurrentTime(),
+                        createdAt: new Date(),
                     })
                     EXTStorage.YTVideos.setValue(ytvideos)
                 })

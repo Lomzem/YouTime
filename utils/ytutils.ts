@@ -37,3 +37,8 @@ export function getYTTitle(): string {
     }
     return titleElem.textContent
 }
+
+export function urlToThumbnail(url: string): string {
+    const id = url.split("/").pop()
+    return `https://i.ytimg.com/vi/${id}/hqdefault.jpg`
+}

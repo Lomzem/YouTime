@@ -52,7 +52,7 @@
             class="neutral bg-foreground rounded-lg px-3 py-2 text-base"
         >
             <option value="recent">Recently added</option>
-            <option value="notes">Most notes</option>
+            <option value="notecount">Most notes</option>
             <option value="title">Title</option>
         </select>
 

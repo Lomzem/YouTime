@@ -12,13 +12,16 @@ export function sortVideos(videos: YTVideo[]): YTVideo[] {
             /* Sort timestamps */
             videos.map((video) =>
                 video.timestamps.sort((a, b) => {
-                    return a.createdAt.getTime() - b.createdAt.getTime()
+                    return (
+                        new Date(a.createdAt).getTime() -
+                        new Date(b.createdAt).getTime()
+                    )
                 })
             )
             sorted = videos.sort((a, b) => {
                 return (
-                    b.timestamps[0].createdAt.getTime() -
-                    a.timestamps[0].createdAt.getTime()
+                    new Date(b.timestamps[0].createdAt).getTime() -
+                    new Date(a.timestamps[0].createdAt).getTime()
                 )
             })
             return appState.sortOrder === "desc" ? sorted.reverse() : sorted

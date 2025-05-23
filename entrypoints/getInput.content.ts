@@ -10,6 +10,35 @@ function closeYouTime() {
     }
 }
 
+function saveTimestamp(note: string) {
+    if (note.trim().length === 0) return
+    EXTStorage.YTVideos.getValue().then((ytvideos) => {
+        const cleanURL = getCleanURL()
+        if (!ytvideos) ytvideos = {}
+        if (!ytvideos[cleanURL]) {
+            ytvideos[cleanURL] = {
+                title: getYTTitle(),
+                timestamps: [],
+                url: cleanURL,
+                thumbnailUrl: urlToThumbnail(cleanURL),
+            }
+        }
+        ytvideos[cleanURL].timestamps.push({
+            note,
+            time: getCurrentTime(),
+            createdAt: new Date(),
+        })
+        ytvideos[cleanURL].timestamps.sort((a, b) => {
+            return (
+                new Date(a.createdAt).getTime() -
+                new Date(b.createdAt).getTime()
+            )
+        })
+        EXTStorage.YTVideos.setValue(ytvideos)
+    })
+    closeYouTime()
+}
+
 export default defineContentScript({
     registration: "runtime",
     main() {
@@ -25,32 +54,22 @@ export default defineContentScript({
         }
         const textarea: HTMLTextAreaElement | null =
             document.querySelector("#youtime-input")
+
+        if (textarea) {
+            textarea.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") {
+                    saveTimestamp(textarea.value)
+                }
+            })
+        }
+
         const saveBtn: HTMLButtonElement | null =
             document.querySelector("#youtime-save-btn")
         if (saveBtn) {
             saveBtn.addEventListener("mousedown", () => {
                 /* TODO: Add error message */
-                if (!textarea || textarea.value.length <= 0) return
-
-                EXTStorage.YTVideos.getValue().then((ytvideos) => {
-                    const cleanURL = getCleanURL()
-                    if (!ytvideos) ytvideos = {}
-                    if (!ytvideos[cleanURL]) {
-                        ytvideos[cleanURL] = {
-                            title: getYTTitle(),
-                            timestamps: [],
-                            url: cleanURL,
-                            thumbnailUrl: urlToThumbnail(cleanURL),
-                        }
-                    }
-                    ytvideos[cleanURL].timestamps.push({
-                        note: textarea.value,
-                        time: getCurrentTime(),
-                        createdAt: new Date(),
-                    })
-                    EXTStorage.YTVideos.setValue(ytvideos)
-                })
-                closeYouTime()
+                if (!textarea) return
+                saveTimestamp(textarea.value)
             })
         }
 

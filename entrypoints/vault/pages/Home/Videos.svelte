@@ -13,6 +13,9 @@
             : "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"}
         in:fade={{ duration: 200 }}
     >
+        {#if videos.length == 0}
+            <p class="text-4xl">No videos found 😔</p>
+        {/if}
         {#each sortVideos(videos) as video (getIDfromURL(video.url))}
             <div in:scale|global={{ duration: 200, delay: 100 }}>
                 {#if appState.viewMode == "list"}

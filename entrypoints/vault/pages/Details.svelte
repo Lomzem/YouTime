@@ -11,8 +11,10 @@
     }
 
     let { params }: Props = $props()
-    const videoPromise = appState.videosPromise.then((videos) =>
-        videos.find((v) => getIDfromURL(v.url) === params.id)
+    const videoPromise = $derived(
+        appState.videosPromise.then((videos: YTVideo[]) =>
+            videos.find((v) => getIDfromURL(v.url) === params.id)
+        )
     )
 
     let newNote = $state("")
@@ -124,11 +126,6 @@
                                                 class="text-copy bg-border/50 rounded px-2 py-1 font-medium"
                                                 >{timestamp.time}</span
                                             >
-                                            <span
-                                                class="text-copy-lighter text-sm"
-                                            >
-                                                {timestamp.createdAt.toLocaleDateString()}
-                                            </span>
                                         </div>
                                         <p class="text-copy-light mt-2">
                                             {timestamp.note}

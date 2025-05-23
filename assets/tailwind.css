@@ -1,30 +1,30 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary: hsl(360, 78%, 64%);
-    --color-primary-content: hsl(0, 77%, 14%);
-    --color-primary-dark: hsl(359, 78%, 54%);
-    --color-primary-light: hsl(359, 79%, 74%);
+    --color-primary: hsl(230, 78%, 64%);
+    --color-primary-content: hsl(230, 77%, 98%);
+    --color-primary-dark: hsl(230, 78%, 54%);
+    --color-primary-light: hsl(230, 79%, 74%);
 
-    --color-secondary: hsl(60, 78%, 64%);
-    --color-secondary-content: hsl(60, 77%, 14%);
-    --color-secondary-dark: hsl(60, 78%, 54%);
-    --color-secondary-light: hsl(59, 79%, 74%);
+    --color-secondary: hsl(250, 78%, 64%);
+    --color-secondary-content: hsl(250, 77%, 98%);
+    --color-secondary-dark: hsl(250, 78%, 54%);
+    --color-secondary-light: hsl(250, 79%, 74%);
 
-    --color-background: hsl(0, 29%, 94%);
-    --color-foreground: hsl(0, 25%, 98%);
-    --color-border: hsl(0, 30%, 88%);
+    --color-background: hsl(230, 20%, 97%);
+    --color-foreground: hsl(230, 25%, 99%);
+    --color-border: hsl(230, 20%, 92%);
 
-    --color-copy: hsl(0, 30%, 15%);
-    --color-copy-light: hsl(359, 30%, 40%);
-    --color-copy-lighter: hsl(0, 30%, 55%);
+    --color-copy: hsl(230, 30%, 15%);
+    --color-copy-light: hsl(230, 20%, 40%);
+    --color-copy-lighter: hsl(230, 15%, 55%);
 
-    --color-success: hsl(120, 78%, 64%);
-    --color-warning: hsl(60, 78%, 64%);
+    --color-success: hsl(150, 78%, 64%);
+    --color-warning: hsl(40, 78%, 64%);
     --color-error: hsl(0, 78%, 64%);
-    --color-success-content: hsl(120, 77%, 14%);
-    --color-warning-content: hsl(60, 77%, 14%);
-    --color-error-content: hsl(0, 77%, 14%);
+    --color-success-content: hsl(150, 77%, 98%);
+    --color-warning-content: hsl(40, 77%, 98%);
+    --color-error-content: hsl(0, 77%, 98%);
 }
 
 button {

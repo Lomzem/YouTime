@@ -1,8 +1,9 @@
-import { AllVideos } from "#imports"
-
 interface AppStateType {
     focused: YTVideo | null
     videosPromise: Promise<YTVideo[]>
+    viewMode: "card" | "list"
+    sortOrder: "asc" | "desc"
+    sortBy: "title" | "recent" | "notecount"
 }
 
 const mockvideos: YTVideo[] = [
@@ -36,6 +37,9 @@ let videosPromise: Promise<YTVideo[]> = Promise.resolve(mockvideos)
 let appState = $state<AppStateType>({
     focused: null,
     videosPromise,
+    viewMode: "card",
+    sortOrder: "desc",
+    sortBy: "recent",
 })
 
 export default appState

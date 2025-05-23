@@ -4,9 +4,9 @@
 </script>
 
 <main
-    class="bg-background text-copy-light flex h-screen w-full flex-col items-center text-xl"
+    class="bg-background text-copy-light flex min-h-screen w-full flex-col items-center py-6 text-base"
 >
-    <div class="flex w-full max-w-[135rem] flex-col gap-8 p-4 sm:px-6 lg:px-8">
+    <div class="flex w-full max-w-[120rem] flex-col gap-8 px-4 sm:px-6 lg:px-8">
         <Controls />
         <Videos />
     </div>
